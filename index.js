@@ -17,7 +17,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
+// Variable "external" is in the global scope (window scope in browser terms). "myFunction" may access anything in the global scope. Variable "internal" is within the closure scope of myFunction. That scope is delineated by the curly brackets ("{}") in the function declaration. "nestedFunction" can reach outside it's own scope to access "internal"; it could even access "external" in the global scope, if it were required. On the other hand, "internal", is NOT accessable from the global scope, or anywhere outside the closure of "myFunction".
 
 
 
@@ -28,11 +28,16 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
+function summation(num) {
   /*Your Code Here*/
-
+  let numSum = 0;
+  while (num > 0) {
+    numSum += num;
+    num--;
   }
- 
+  return numSum;
+}
+// console.log(summation(6));
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
