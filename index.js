@@ -13,11 +13,12 @@ function myFunction() {
   }
   nestedFunction();
 }
+
 myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-// Variable "internal" is within the closure scope of myFunction. That scope is delineated by the curly brackets ("{}") in the function declaration. "nestedFunction" can reach outside it's own scope to access "internal"; it could even access "external" in the global scope, if it were required. On the other hand, "internal", is NOT accessable from the global scope, or anywhere outside the closure of "myFunction".
+// Variable "internal" is within the closure scope of myFunction. That scope is delineated by the curly brackets ("{}") in the function declaration. "nestedFunction" can reach outside it's own scope to access "internal"; it could even access "external" out in the global scope, if it were required. On the other hand, "internal", is NOT defined from the global scope, or anywhere outside the closure of "myFunction".
 
 
 
@@ -242,8 +243,40 @@ console.log(cuboidTwo.surfaceArea()); // 130
 
 
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
-  
+// function CubeMaker(obj) {
+//   CuboidMaker.call(this, obj)
+// }
+// CubeMaker.prototype = Object.create(CuboidMaker.prototype);
 
+// CubeMaker.prototype.volume() {
+//   return Math.pow(this.length, 3);
+// }
+// CubeMaker.prototype.surfaceArea() {
+//   return 6 * Math.pow(this.length, 2);
+// }
+
+
+  
+// class CubeMaker extends CuboidMakerTwo {
+//   constructor(obj) {
+//     // if (obj.height === obj.length && obj.height === obj.width) {  //Are dimensions consistent with a cube?
+//       super (obj);
+//         volume() {
+//           return Math.pow(this.length, 3);
+//         }
+//         surfaceArea() {
+//           return 6 * Math.pow(this.length, 2);
+//         }
+//     // } else {                                                       //Not a cube!
+//     //   return "Dimensions must be equal to create a cube (length = width = height)."
+//     // }
+//   } 
+// };
+// const cube = new CubeMaker({
+//   length: 4,
+//   width: 4,
+//   height: 
+// });
 
 
 

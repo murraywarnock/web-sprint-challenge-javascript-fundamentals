@@ -45,13 +45,13 @@ Closure is the limitation of variable scope. For example, a variable declared wi
 
     2. When an object calls a method, the calling object is ".this" This is known as *implicit binding*.
 
-    3. When a function is invoked with ".call()", ".apply()" or ".bind()", "this" is the object that is passed as the first argument, before any arguments used as parameters for the function. This is know as *explicit binding*.
+    3. When a function is invoked with ".call()", ".apply()" or ".bind()", "this" is the object that is invoking it, and is passed as "this" as the first argument, before any arguments used as parameters for the function. This is known as *explicit binding*.
 
     4. When a new object is instantiated from a class or prototype (using the "new" keyword) the new object is "this".
 
 5. Why do we need super() in an extended class?
 
-"super()" in an extended class (child class) associates the extended class with the properties and methods (js object keys and functions) of the class being extended (parent class).
+"super()" in an extended class (child class) associates the extended class with the attributes and methods (js object keys and functions) of the class being extended (parent class).
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
