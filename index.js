@@ -17,7 +17,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-// Variable "external" is in the global scope (window scope in browser terms). "myFunction" may access anything in the global scope. Variable "internal" is within the closure scope of myFunction. That scope is delineated by the curly brackets ("{}") in the function declaration. "nestedFunction" can reach outside it's own scope to access "internal"; it could even access "external" in the global scope, if it were required. On the other hand, "internal", is NOT accessable from the global scope, or anywhere outside the closure of "myFunction".
+// Variable "internal" is within the closure scope of myFunction. That scope is delineated by the curly brackets ("{}") in the function declaration. "nestedFunction" can reach outside it's own scope to access "internal"; it could even access "external" in the global scope, if it were required. On the other hand, "internal", is NOT accessable from the global scope, or anywhere outside the closure of "myFunction".
 
 
 
@@ -61,9 +61,15 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
+  function animalNames(array){
     /*Your Code Here*/
+    let displayNames = [];
+    array.forEach(function(x) {
+      displayNames.push(`name: ${x.animal_name}, scientific: ${x.scientific_name}`);
+    })
+    return displayNames;
   }
+  // console.log(animalNames(zooAnimals));
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -72,9 +78,12 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
+  function lowerCaseNames(array){
     /*Your Code Here*/
+    let newArray = array.map(x => x.animal_name.toLowerCase());
+    return newArray;
   }
+  // console.log(lowerCaseNames(zooAnimals))
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
