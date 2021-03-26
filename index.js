@@ -191,6 +191,10 @@ function CuboidMaker(obj){
     return (2 * ((this.length * this.width) + (this.length * this.height) + (this.width * this.height)));
  }
 
+ CuboidMaker.prototype.isCube = function() {
+  return (this.length === this.width && this.length === this.height);
+}
+
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
@@ -209,6 +213,7 @@ const cuboid = new CuboidMaker({
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
 console.log(cuboid.volume()); // 100
 console.log(cuboid.surfaceArea()); // 130
+console.log(cuboid.isCube()) //false
  
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
@@ -224,6 +229,10 @@ class CuboidMakerTwo{
   surfaceArea(){
     return (2 * ((this.length * this.width) + (this.length * this.height) + (this.width * this.height)));
  }
+ isCube() {
+  return (this.length === this.width && this.length === this.height);
+}
+
 };
 
 const cuboidTwo = new CuboidMakerTwo({
@@ -237,6 +246,8 @@ const cuboidTwo = new CuboidMakerTwo({
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
 console.log(cuboidTwo.volume()); // 100
 console.log(cuboidTwo.surfaceArea()); // 130
+console.log(cuboidTwo.isCube()) //false
+ 
 
 
 
@@ -246,28 +257,54 @@ console.log(cuboidTwo.surfaceArea()); // 130
 
 // A cube IS a cuboid - it is just even-sided. The methods for volume and surface area for cuboids work for cubes as well.
 
-// I added a .isCube method to the CubeMaker prototype; it works and returns boolean false if the sides are not equal.
+// Added a .isCube method to the CuboidMaker prototype and CuboidMakerTwo class constructor above; they work and return boolean false if the sides are not equal. It also is inherited by CubeMaker and return boolean true if the object passed is truly cubical!
 
 // console.logging my newly instantiated cube object seems to return a CuboidMaker object with the properties and values of new cube - strange. There should be no such thing as a CuboidMaker object.
 
+// Did a class/constructor version of the same thing using CuboidMakerTwo as the parent.
+
+// subclass of CubeMaker done using prototype syntax:
 function CubeMaker(obj) {
   CuboidMaker.call(this, obj);
 };
 CubeMaker.prototype = Object.create(CuboidMaker.prototype);
 
 const cube = new CubeMaker({
+  length: 5,
+  width: 5,
+  height: 5,
+});
+
+console.log(`cube volume: ${cube.volume()}`);
+console.log(`cube surfaceArea: ${cube.surfaceArea()}`);
+console.log(`cube isCube: ${cube.isCube()}`);
+
+// subClass of CuboidMakerTwo using class syntax
+class CubeMakerTwo extends CuboidMakerTwo {
+  constructor(obj) {
+    super(obj);
+  }
+};
+const cubeTwo = new CubeMakerTwo({
   length: 4,
   width: 4,
-  height: 4,
+  height: 4
 });
-CubeMaker.prototype.isCube = function() {
-  return (this.length === this.width && this.length === this.height);
-};
+console.log(`cubeTwo volume: ${cubeTwo.volume()}`);
+console.log(`cubeTwo surfaceArea: ${cubeTwo.surfaceArea()}`);
+console.log(`cubeTwo isCube: ${cubeTwo.isCube()}`);
 
-console.log(cube);
-console.log(cube.volume());
-console.log(cube.surfaceArea());
-console.log(cube.isCube());
+//What happens if the given dimensions in the argument do not make a cube?
+const notACube = new CubeMakerTwo({
+  length: 7,
+  width: 4,
+  height: 4
+});
+console.log(`notACube volume: ${notACube.volume()}`);
+console.log(`notACube surfaceArea: ${notACube.surfaceArea()}`);
+console.log(`notACube isCube: ${notACube.isCube()}`);
+
+
 
 
   /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
