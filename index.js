@@ -68,7 +68,7 @@ const zooAnimals = [
     array.forEach(x => {displayNames.push(`name: ${x.animal_name}, scientific: ${x.scientific_name}`)});
     return displayNames;
   }
-  console.log(animalNames(zooAnimals));
+  // console.log(animalNames(zooAnimals));
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -243,42 +243,31 @@ console.log(cuboidTwo.surfaceArea()); // 130
 
 
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
-// function CubeMaker(obj) {
-//   CuboidMaker.call(this, obj)
-// }
-// CubeMaker.prototype = Object.create(CuboidMaker.prototype);
 
-// CubeMaker.prototype.volume() {
-//   return Math.pow(this.length, 3);
-// }
-// CubeMaker.prototype.surfaceArea() {
-//   return 6 * Math.pow(this.length, 2);
-// }
+// A cube IS a cuboid - it is just even-sided. The methods for volume and surface area for cuboids work for cubes as well.
 
+// I added a .isCube method to the CubeMaker prototype; it works and returns boolean false if the sides are not equal.
 
-  
-// class CubeMaker extends CuboidMakerTwo {
-//   constructor(obj) {
-//     // if (obj.height === obj.length && obj.height === obj.width) {  //Are dimensions consistent with a cube?
-//       super (obj);
-//         volume() {
-//           return Math.pow(this.length, 3);
-//         }
-//         surfaceArea() {
-//           return 6 * Math.pow(this.length, 2);
-//         }
-//     // } else {                                                       //Not a cube!
-//     //   return "Dimensions must be equal to create a cube (length = width = height)."
-//     // }
-//   } 
-// };
-// const cube = new CubeMaker({
-//   length: 4,
-//   width: 4,
-//   height: 
-// });
+// console.logging my newly instantiated cube object seems to return a CuboidMaker object with the properties and values of new cube - strange. There should be no such thing as a CuboidMaker object.
 
+function CubeMaker(obj) {
+  CuboidMaker.call(this, obj);
+};
+CubeMaker.prototype = Object.create(CuboidMaker.prototype);
 
+const cube = new CubeMaker({
+  length: 4,
+  width: 4,
+  height: 4,
+});
+CubeMaker.prototype.isCube = function() {
+  return (this.length === this.width && this.length === this.height);
+};
+
+console.log(cube);
+console.log(cube.volume());
+console.log(cube.surfaceArea());
+console.log(cube.isCube());
 
 
   /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
